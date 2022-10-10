@@ -1,6 +1,7 @@
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait as wait
 from selenium.webdriver.support import expected_conditions as EC
+from loguru import logger
+
 
 
 class BasePage:
@@ -17,7 +18,8 @@ class BasePage:
                 EC.visibility_of_element_located(locator)
             )
         except Exception as e:
-            print(e)
+            logger.critical(f"Ошибка видимости элемента {e}")
+
 
     def elements_are_visible(self, locator, timeout=30):
         try:
@@ -51,7 +53,7 @@ class BasePage:
         except Exception as e:
             print(e)
 
-    def element_is_clicable(self, locator, timeout=30):
+    def element_is_clickable(self, locator, timeout=30):
         try:
             return wait(self.driver, timeout).until(
                 EC.element_to_be_clickable(locator)
