@@ -1,6 +1,5 @@
 import time
-
-from pages.elements_page import TextBoxPage
+from pages.elements_page import TextBoxPage, CheckBoxPage
 
 
 def test_text_box(driver):
@@ -12,6 +11,13 @@ def test_text_box(driver):
     assert email == out_email, "Введенный email не соответствует отображаемомому в итоговой форме"
     assert current_address == out_current_address, "Введенный текущий адрес не соответствует отображаемомому в итоговой форме"
     assert permanent_address == out_permanent_address, "Введенный постоянный адрес не соответствует отображаемомому в итоговой форме"
+
+
+def test_checkbox(driver):
+    checkbox_page = CheckBoxPage(driver, 'https://demoqa.com/checkbox')
+    checkbox_page.open()
+
+
 
 
 

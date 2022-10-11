@@ -14,3 +14,11 @@ class TextBoxLocator:
     CREATED_EMAIL = (By.XPATH, "//p[@id='email']")
     CREATED_CURRENT_ADDRESS = (By.XPATH, "//p[@id='currentAddress']")
     CREATED_PERMANENT_ADDRESS = (By.XPATH, "//p[@id='permanentAddress']")
+
+
+class CheckBoxLocators:
+    EXPAND_ALL = (By.XPATH, "//button[@title='Expand all']")
+    ITEM_LIST = (By.XPATH, "//span[@class='rct-title']")
+
+
+
