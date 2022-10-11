@@ -1,6 +1,8 @@
 from generator.generator import generated_person
 from locators.elements_page_locator import TextBoxLocator, CheckBoxLocators
 from pages.base_page import BasePage
+import random
+from loguru import logger
 
 
 class TextBoxPage(BasePage):
@@ -28,6 +30,27 @@ class TextBoxPage(BasePage):
         permanent_address = self.element_is_presence(self.locators.CREATED_PERMANENT_ADDRESS).text.split(":")[1]
         return full_name, email, current_address, permanent_address
 
+
 class CheckBoxPage(BasePage):
 
-    locators = CheckBoxLocators()
+    _locators = CheckBoxLocators()
+
+    def expand_full_item_list(self):
+        self.element_is_clickable(self._locators.EXPAND_ALL).click()
+
+    def click_random_item(self):
+        item_list = self.elements_are_presence(self._locators.ITEM_LIST)
+        cout = 21
+        while cout != 0:
+            item = item_list[random.randint(1, 16)]
+            if cout > 0:
+                self.scroll_to_element(item)
+                item.click()
+                logger.debug(item.text)
+                cout -= 1
+            else:
+                break
+
+
+
+

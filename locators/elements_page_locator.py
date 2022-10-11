@@ -19,6 +19,7 @@ class TextBoxLocator:
 class CheckBoxLocators:
     EXPAND_ALL = (By.XPATH, "//button[@title='Expand all']")
     ITEM_LIST = (By.XPATH, "//span[@class='rct-title']")
+    CHECKED_ITEMS = (By.XPATH, "//*[@class='rct-icon rct-icon-check']")
 
 
 

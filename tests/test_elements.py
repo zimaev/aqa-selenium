@@ -16,6 +16,9 @@ def test_text_box(driver):
 def test_checkbox(driver):
     checkbox_page = CheckBoxPage(driver, 'https://demoqa.com/checkbox')
     checkbox_page.open()
+    checkbox_page.expand_full_item_list()
+    checkbox_page.click_random_item()
+    time.sleep(7)
 
 
 
