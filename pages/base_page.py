@@ -3,7 +3,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from loguru import logger
 
 
-
 class BasePage:
     def __init__(self, driver, url: str):
         self.driver = driver
@@ -48,7 +47,7 @@ class BasePage:
     def element_is_not_visible(self, locator, timeout=30):
         try:
             return wait(self.driver, timeout).until(
-                EC.invisibility_of_element_located( locator)
+                EC.invisibility_of_element_located(locator)
             )
         except Exception as e:
             print(e)

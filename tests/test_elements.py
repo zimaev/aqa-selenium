@@ -18,7 +18,9 @@ def test_checkbox(driver):
     checkbox_page.open()
     checkbox_page.expand_full_item_list()
     checkbox_page.click_random_item()
-    time.sleep(7)
+    input_chekbox = checkbox_page.get_checked_items()
+    output_chekbox = checkbox_page.get_output_result()
+    assert input_chekbox == output_chekbox, "Установленные чекбоксы не равны отображаемым"
 
 
 

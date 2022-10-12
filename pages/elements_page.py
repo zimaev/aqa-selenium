@@ -46,10 +46,27 @@ class CheckBoxPage(BasePage):
             if cout > 0:
                 self.scroll_to_element(item)
                 item.click()
-                logger.debug(item.text)
                 cout -= 1
             else:
                 break
+
+    def get_checked_items(self):
+        checked_list = self.elements_are_presence(self._locators.CHECKED_ITEMS)
+        data = []
+        for box in checked_list:
+            title_item = box.find_element(*self._locators.ITEM_TITLE)
+            data.append(title_item.text)
+        return str(data).replace(' ', '').replace('doc', '').replace('.', '').lower()
+
+    def get_output_result(self):
+        output_list = self.elements_are_presence(self._locators.OUTPUT_RESULT)
+        data = []
+        for item in output_list:
+            data.append(item.text)
+        return str(data).replace(' ', '').lower()
+
+
+
 
 
 
