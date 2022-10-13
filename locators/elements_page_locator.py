@@ -24,4 +24,12 @@ class CheckBoxLocators:
     OUTPUT_RESULT = (By.XPATH, "//span[@class='text-success']")
 
 
+class RadioButtonLocators:
+    YES_RADIO = (By.XPATH, "//input[@id='yesRadio']")
+    IMPRESSIVE_RADIO = (By.XPATH, "//input[@id='impressiveRadio']")
+    RADIO = (By.XPATH, "//label[contains(text(),'Yes')]")
+    SELECTED_RADIO = (By.XPATH, "//span[@class='text-success']")
+
+
+
 

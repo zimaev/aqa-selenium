@@ -1,5 +1,7 @@
+from selenium.webdriver.common.by import By
+
 from generator.generator import generated_person
-from locators.elements_page_locator import TextBoxLocator, CheckBoxLocators
+from locators.elements_page_locator import TextBoxLocator, CheckBoxLocators, RadioButtonLocators
 from pages.base_page import BasePage
 import random
 from loguru import logger
@@ -32,7 +34,6 @@ class TextBoxPage(BasePage):
 
 
 class CheckBoxPage(BasePage):
-
     _locators = CheckBoxLocators()
 
     def expand_full_item_list(self):
@@ -66,8 +67,11 @@ class CheckBoxPage(BasePage):
         return str(data).replace(' ', '').lower()
 
 
+class RadioButton(BasePage):
+    _locators = RadioButtonLocators()
 
+    def click_radio_button(self, btn):
+        self.element_is_presence(((By.XPATH, f"//label[contains(text(),'{btn}')]"))).click()
 
-
-
-
+    def get_selected_text(self):
+        return self.element_is_presence(self._locators.SELECTED_RADIO).text

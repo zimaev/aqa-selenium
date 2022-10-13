@@ -1,5 +1,6 @@
 import time
-from pages.elements_page import TextBoxPage, CheckBoxPage
+import pytest
+from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButton
 
 
 def test_text_box(driver):
@@ -21,6 +22,23 @@ def test_checkbox(driver):
     input_chekbox = checkbox_page.get_checked_items()
     output_chekbox = checkbox_page.get_output_result()
     assert input_chekbox == output_chekbox, "Установленные чекбоксы не равны отображаемым"
+
+
+@pytest.mark.parametrize("radio", ['Yes', 'Impressive', "No"])
+def test_radio_button(driver, radio):
+    radio_button = RadioButton(driver, 'https://demoqa.com/radio-button')
+    radio_button.open()
+    radio_button.click_radio_button(radio)
+    get = radio_button.get_selected_text()
+    if radio in ['Yes', 'Impressive']:
+        assert radio == get
+    elif radio == "No":
+        pytest.xfail(reason="Негативный тест. Чекбокс заблокирован")
+
+
+
+
+
 
 
 
