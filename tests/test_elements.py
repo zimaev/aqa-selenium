@@ -41,8 +41,12 @@ class TestWebTable:
     def test_web_table_add_person(self, driver):
         web_table = WebTablePage(driver, 'https://demoqa.com/webtables')
         web_table.open()
-        web_table.add_new_person()
-        time.sleep(5)
+        new_person = web_table.add_new_person()
+        table = web_table.check_added_new_person()
+        assert new_person in table
+        time.sleep(1)
+
+
 
 
 
