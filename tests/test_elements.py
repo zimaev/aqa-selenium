@@ -44,7 +44,19 @@ class TestWebTable:
         new_person = web_table.add_new_person()
         table = web_table.check_added_new_person()
         assert new_person in table
-        time.sleep(1)
+
+    @pytest.mark.parametrize("field", [0, 1, 4])
+    def test_web_table_search_person(self, driver, field):
+        #TODO Переделать праметризацию для корректного отображения в тестах.
+        web_table = WebTablePage(driver, 'https://demoqa.com/webtables')
+        web_table.open()
+        new_person = web_table.add_new_person()[field]
+        web_table.search_person(new_person)
+        search_table = web_table.check_search_person()
+        assert new_person in search_table , "Введенное знание в поле поиста не присутсвует в таблице"
+
+
+
 
 
 

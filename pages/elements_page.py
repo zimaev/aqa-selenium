@@ -39,13 +39,13 @@ class CheckBoxPage(BasePage):
 
     def click_random_item(self):
         item_list = self.elements_are_presence(self._locators.ITEM_LIST)
-        cout = 21
-        while cout != 0:
+        count = 21
+        while count != 0:
             item = item_list[random.randint(1, 16)]
-            if cout > 0:
+            if count > 0:
                 self.scroll_to_element(item)
                 item.click()
-                cout -= 1
+                count -= 1
             else:
                 break
 
@@ -105,5 +105,13 @@ class WebTablePage(BasePage):
         data = []
         for i in person_list:
             data.append(i.text.splitlines())
-
         return data
+
+    def search_person(self, keyword):
+        self.element_is_visible(self.locators.SEARCH_FIELD).click()
+        self.element_is_visible(self.locators.SEARCH_FIELD).send_keys(keyword)
+
+    def check_search_person(self):
+        delete_btn = self.element_is_visible(self.locators.DELETE_BUTTON)
+        row = delete_btn.find_element(*self.locators.ROW_PARENT)
+        return row.text.splitlines()
