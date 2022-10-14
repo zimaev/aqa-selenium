@@ -1,6 +1,6 @@
 import time
 import pytest
-from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButton
+from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButton, WebTablePage
 
 
 def test_text_box(driver):
@@ -32,10 +32,17 @@ def test_radio_button(driver, radio):
     get = radio_button.get_selected_text()
     if radio in ['Yes', 'Impressive']:
         assert radio == get
-    elif radio == "No":
+    else:
         pytest.xfail(reason="Негативный тест. Чекбокс заблокирован")
 
 
+class TestWebTable:
+
+    def test_web_table_add_person(self, driver):
+        web_table = WebTablePage(driver, 'https://demoqa.com/webtables')
+        web_table.open()
+        web_table.add_new_person()
+        time.sleep(5)
 
 
 

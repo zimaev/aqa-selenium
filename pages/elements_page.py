@@ -1,10 +1,8 @@
 from selenium.webdriver.common.by import By
-
 from generator.generator import generated_person
-from locators.elements_page_locator import TextBoxLocator, CheckBoxLocators, RadioButtonLocators
+from locators.elements_page_locator import TextBoxLocator, CheckBoxLocators, RadioButtonLocators, WebTablePageLocators
 from pages.base_page import BasePage
 import random
-from loguru import logger
 
 
 class TextBoxPage(BasePage):
@@ -71,7 +69,33 @@ class RadioButton(BasePage):
     _locators = RadioButtonLocators()
 
     def click_radio_button(self, btn):
-        self.element_is_presence(((By.XPATH, f"//label[contains(text(),'{btn}')]"))).click()
+        self.element_is_presence((By.XPATH, f"//label[contains(text(),'{btn}')]")).click()
 
     def get_selected_text(self):
         return self.element_is_presence(self._locators.SELECTED_RADIO).text
+
+
+class WebTablePage(BasePage):
+    locators = WebTablePageLocators()
+
+    def add_new_person(self):
+        count = 1
+        while count != 0:
+            person_info = next(generated_person())
+            first_name = person_info.first_name
+            last_name = person_info.last_name
+            email = person_info.email
+            age = person_info.age
+            salary = person_info.salary
+            department = person_info.department
+
+            self.element_is_visible(self.locators.ADD_BUTTON).click()
+            self.element_is_visible(self.locators.FIRST_NAME_FIELD).send_keys(first_name)
+            self.element_is_visible(self.locators.LAST_NAME_FIELD).send_keys(last_name)
+            self.element_is_visible(self.locators.EMAIL_FIELD).send_keys(email)
+            self.element_is_visible(self.locators.AGE_FIELD).send_keys(age)
+            self.element_is_visible(self.locators.SALARY_FIELD).send_keys(salary)
+            self.element_is_visible(self.locators.DEPARTMENT_FIELD).send_keys(department)
+            self.element_is_clickable(self.locators.SUBMIT).click()
+            count -= 1
+            return first_name, last_name, email, age, salary, department
