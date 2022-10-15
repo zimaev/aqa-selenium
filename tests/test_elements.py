@@ -3,6 +3,7 @@ import pytest
 from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButton, WebTablePage
 
 
+
 def test_text_box(driver):
     page = TextBoxPage(driver, 'https://demoqa.com/text-box')
     page.open()
@@ -54,6 +55,39 @@ class TestWebTable:
         web_table.search_person(new_person)
         search_table = web_table.check_search_person()
         assert new_person in search_table , "Введенное знание в поле поиста не присутсвует в таблице"
+
+    def test_web_table_edit_person_info(self, driver):
+        web_table = WebTablePage(driver, 'https://demoqa.com/webtables')
+        web_table.open()
+        new_person = web_table.add_new_person()[0]
+        web_table.search_person(new_person)
+        new_age = web_table.edit_person_info()
+        search_table = web_table.check_search_person()
+        assert new_age in search_table , "значение в анкете не изменено"
+
+    def test_web_table_delete_person_info(self, driver):
+        web_table = WebTablePage(driver, 'https://demoqa.com/webtables')
+        web_table.open()
+        new_person = web_table.add_new_person()[0]
+        web_table.search_person(new_person)
+        web_table.delete_person()
+        assert web_table.check_empty_tabel == "No rows found"
+
+    @pytest.mark.parametrize('count', ['5', '10', '20', '25', '50', '100'])
+    def test_web_table_change_count_row(self, driver, count):
+        web_table = WebTablePage(driver, 'https://demoqa.com/webtables')
+        web_table.open()
+        web_table.change_count_row(count)
+        row = web_table.check_count_row_in_table()
+        assert row == int(count)
+
+
+
+
+
+
+
+
 
 
 

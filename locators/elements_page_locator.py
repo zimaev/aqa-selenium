@@ -47,6 +47,10 @@ class WebTablePageLocators:
     SEARCH_FIELD = (By.XPATH, "//input[@id='searchBox']")
     DELETE_BUTTON = (By.XPATH, "//span[@title='Delete']")
     ROW_PARENT = (By.XPATH, ".//ancestor::div[@class='rt-tr-group']")
+    EDIT_BUTTON = (By.XPATH, "//span[@title='Edit']")
+    NO_ROWS_MESSAGE = (By.XPATH, "//div[@class='rt-noData']")
+    ROW = (By.XPATH, "//div[@class='rt-tr-group']")
+    SELECT = (By.XPATH, '//select[@aria-label="rows per page"]')
 
 
 

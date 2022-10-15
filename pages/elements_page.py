@@ -1,3 +1,5 @@
+import time
+from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.by import By
 from generator.generator import generated_person
 from locators.elements_page_locator import TextBoxLocator, CheckBoxLocators, RadioButtonLocators, WebTablePageLocators
@@ -115,3 +117,32 @@ class WebTablePage(BasePage):
         delete_btn = self.element_is_visible(self.locators.DELETE_BUTTON)
         row = delete_btn.find_element(*self.locators.ROW_PARENT)
         return row.text.splitlines()
+
+    def edit_person_info(self):
+        person_info = next(generated_person())
+        age = person_info.age
+        self.element_is_visible(self.locators.EDIT_BUTTON).click()
+        self.element_is_visible(self.locators.AGE_FIELD).clear()
+        self.element_is_visible(self.locators.AGE_FIELD).send_keys(age)
+        self.element_is_clickable(self.locators.SUBMIT).click()
+        return str(age)
+
+    def delete_person(self):
+        self.element_is_visible(self.locators.DELETE_BUTTON).click()
+
+    @property
+    def check_empty_tabel(self):
+        return self.element_is_visible(self.locators.NO_ROWS_MESSAGE).text
+
+    def change_count_row(self, count):
+        self.scroll_to_element(self.element_is_visible(self.locators.SELECT))
+        select = Select(self.driver.find_element(*self.locators.SELECT))
+        select.select_by_value(count)
+
+    def check_count_row_in_table(self):
+        count = self.elements_are_presence(self.locators.ROW)
+        return len(count)
+
+
+
+
