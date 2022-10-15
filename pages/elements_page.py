@@ -2,9 +2,10 @@ import time
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.by import By
 from generator.generator import generated_person
-from locators.elements_page_locator import TextBoxLocator, CheckBoxLocators, RadioButtonLocators, WebTablePageLocators
+from locators.elements_page_locator import *
 from pages.base_page import BasePage
 import random
+from selenium.webdriver.common.action_chains import ActionChains
 
 
 class TextBoxPage(BasePage):
@@ -144,5 +145,23 @@ class WebTablePage(BasePage):
         return len(count)
 
 
+class ButtonPage(BasePage):
 
+    locators = ButtonPageLocators()
+
+    def dbl_click(self):
+        self.double_click(self.element_is_clickable(self.locators.DOUBLE_CLICK_BUTTON))
+        msg = self.element_is_visible(self.locators.DOUBLE_CLICK_MESSAGE)
+        return msg.text
+
+    def rgt_click(self):
+        self.right_click(self.element_is_clickable(self.locators.RIGHT_CLICK_BUTTON))
+        msg = self.element_is_visible(self.locators.RIGHT_CLICK_MESSAGE)
+        return msg.text
+
+    def regular_click(self):
+        actions = ActionChains(self.driver)
+        actions.click(self.element_is_clickable(self.locators.REGULAR_CLICK_BUTTON)).perform()
+        msg = self.element_is_visible(self.locators.REGULAR_CLICK_MESSAGE)
+        return msg.text
 

@@ -1,3 +1,4 @@
+from selenium.webdriver import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait as wait
 from selenium.webdriver.support import expected_conditions as EC
 from loguru import logger
@@ -36,7 +37,7 @@ class BasePage:
         except Exception as e:
             print(e)
 
-    def elements_are_presence(self, locator, timeout=30):
+    def elements_are_presence(self, locator, timeout=35):
         try:
             return wait(self.driver, timeout).until(
                 EC.presence_of_all_elements_located(locator)
@@ -62,6 +63,14 @@ class BasePage:
 
     def scroll_to_element(self, element):
         self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
+
+    def right_click(self, element):
+        actions = ActionChains(self.driver)
+        actions.context_click(element).perform()
+
+    def double_click(self, element):
+        actions = ActionChains(self.driver)
+        actions.double_click(element).perform()
 
 
 

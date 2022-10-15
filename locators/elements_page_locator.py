@@ -53,6 +53,15 @@ class WebTablePageLocators:
     SELECT = (By.XPATH, '//select[@aria-label="rows per page"]')
 
 
+class ButtonPageLocators:
+    DOUBLE_CLICK_BUTTON = (By.XPATH, "//button[@id='doubleClickBtn']")
+    RIGHT_CLICK_BUTTON = (By.XPATH, "//button[@id='rightClickBtn']")
+    REGULAR_CLICK_BUTTON = (By.XPATH, "//button[text()='Click Me']")
+
+    DOUBLE_CLICK_MESSAGE= (By.XPATH, "//p[@id='doubleClickMessage']")
+    RIGHT_CLICK_MESSAGE = (By.XPATH, "//p[@id='rightClickMessage']")
+    REGULAR_CLICK_MESSAGE = (By.XPATH, "//p[@id='dynamicClickMessage']")
+
 
 
 

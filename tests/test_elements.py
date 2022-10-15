@@ -1,7 +1,7 @@
 import time
 import pytest
-from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButton, WebTablePage
-
+from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButton, WebTablePage, ButtonPage
+from selenium.webdriver.common.action_chains import ActionChains
 
 
 def test_text_box(driver):
@@ -82,6 +82,25 @@ class TestWebTable:
         assert row == int(count)
 
 
+class TestButton:
+
+    def test_double_click(self, driver):
+        button_pages = ButtonPage(driver, "https://demoqa.com/buttons")
+        button_pages.open()
+        msg = button_pages.dbl_click()
+        assert msg == 'You have done a double click'
+
+    def test_right_click(self, driver):
+        button_pages = ButtonPage(driver, "https://demoqa.com/buttons")
+        button_pages.open()
+        msg = button_pages.rgt_click()
+        assert msg == 'You have done a right click'
+
+    def test_regular_click(self, driver):
+        button_pages = ButtonPage(driver, "https://demoqa.com/buttons")
+        button_pages.open()
+        msg = button_pages.regular_click()
+        assert msg == 'You have done a dynamic click'
 
 
 
