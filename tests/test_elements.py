@@ -1,6 +1,6 @@
 import time
 import pytest
-from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButton, WebTablePage, ButtonPage
+from pages.elements_page import *
 from selenium.webdriver.common.action_chains import ActionChains
 
 
@@ -103,6 +103,21 @@ class TestButton:
         assert msg == 'You have done a dynamic click'
 
 
+class TestLink:
+
+    def test_link(self, driver):
+        link_page = LinksPage(driver, 'https://demoqa.com/links')
+        link_page.open()
+        target_url, actual_url = link_page.check_new_tab_simple_link()
+        print(target_url, actual_url)
+        assert target_url == actual_url
+
+
+    def test_broken_link(self, driver):
+        #TODO пересмотреть реализацию негативных тестов. доделать остальные
+        link_page = LinksPage(driver, 'https://demoqa.com/links')
+        response_code = link_page.check_bocken_link("https://demoqa.com/bad-request")
+        assert response_code == 400
 
 
 

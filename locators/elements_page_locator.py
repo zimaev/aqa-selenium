@@ -63,6 +63,10 @@ class ButtonPageLocators:
     REGULAR_CLICK_MESSAGE = (By.XPATH, "//p[@id='dynamicClickMessage']")
 
 
+class LinksPageLocators:
+    SIMPLE_LINK = (By.XPATH, "//a[@id='simpleLink']")
+    BAD_LINK = (By.XPATH, "//a[@id='bad-request']")
+
 
 
 

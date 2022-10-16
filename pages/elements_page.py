@@ -1,4 +1,5 @@
 import time
+from urllib import request
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.by import By
 from generator.generator import generated_person
@@ -6,6 +7,7 @@ from locators.elements_page_locator import *
 from pages.base_page import BasePage
 import random
 from selenium.webdriver.common.action_chains import ActionChains
+import requests
 
 
 class TextBoxPage(BasePage):
@@ -165,3 +167,29 @@ class ButtonPage(BasePage):
         msg = self.element_is_visible(self.locators.REGULAR_CLICK_MESSAGE)
         return msg.text
 
+
+class LinksPage(BasePage):
+
+    locators = LinksPageLocators()
+
+    def check_new_tab_simple_link(self):
+        simple_link = self.element_is_visible(self.locators.SIMPLE_LINK)
+        link_from_href = simple_link.get_attribute('href')
+        response = requests.get(link_from_href)
+        if response.status_code == 200:
+            simple_link.click()
+            self.driver.switch_to.window(self.driver.window_handles[1])
+            new_tab_url = self.driver.current_url
+            return link_from_href, new_tab_url
+        else:
+            return response.status_code
+
+    def check_bocken_link(self, url):
+        respone = requests.get(url)
+        if respone.status_code == 200:
+            self.element_is_presence(self.locators.BAD_LINK).click()
+        else:
+            return respone.status_code
+
+
+        
