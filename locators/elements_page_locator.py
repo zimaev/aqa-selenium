@@ -68,7 +68,9 @@ class LinksPageLocators:
     BAD_LINK = (By.XPATH, "//a[@id='bad-request']")
 
 
-
+class UploadDownloadPageLocators:
+    UPLOAD_FIELD = (By.XPATH, '//input[@id="uploadFile"]')
+    UPLOADED_FILE_PATH = (By.XPATH, "//p[@id='uploadedFilePath']")
 
 
 

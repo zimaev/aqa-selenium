@@ -1,5 +1,6 @@
 import random
-
+from unittest.mock import patch
+import os
 from data.data import Person
 from faker import Faker
 
@@ -21,3 +22,9 @@ def generated_person():
         permanent_address=fake_ru.address()
     )
 
+def generated_file():
+     path = os.path.abspath(f"test_{fake_ru.file_name(category='text')}")
+     file = open(path, "w+")
+     file.write(f'{fake_ru.paragraph(nb_sentences=2)}')
+     file.close()
+     return  file.name, path

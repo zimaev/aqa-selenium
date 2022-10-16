@@ -1,8 +1,9 @@
+import os
+import site
 import time
-from urllib import request
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.by import By
-from generator.generator import generated_person
+from generator.generator import generated_file, generated_person
 from locators.elements_page_locator import *
 from pages.base_page import BasePage
 import random
@@ -191,5 +192,16 @@ class LinksPage(BasePage):
         else:
             return respone.status_code
 
+class UploadDownloadPage(BasePage):
 
+    locators = UploadDownloadPageLocators()
+
+    def upload_file(self):
+        path = generated_file()
+        self.element_is_presence(self.locators.UPLOAD_FIELD).send_keys(path)
+        os.remove(path)
+        site_path = self.element_is_visible(self.locators.UPLOADED_FILE_PATH).text
+    
+        return path.strip("/"), site_path
         
+    

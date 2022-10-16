@@ -1,4 +1,5 @@
 import time
+from unicodedata import name
 import pytest
 from pages.elements_page import *
 from selenium.webdriver.common.action_chains import ActionChains
@@ -119,7 +120,16 @@ class TestLink:
         response_code = link_page.check_bocken_link("https://demoqa.com/bad-request")
         assert response_code == 400
 
+class TestUploadDownload:
 
+
+    def test_upload_file(self, driver):
+        
+        link_page = UploadDownloadPage(driver, 'https://demoqa.com/upload-download')
+        link_page.open()
+        name_file, path_in_site = link_page.upload_file()
+        print(name_file)
+        assert name_file in path_in_site
 
 
 
