@@ -131,6 +131,29 @@ class TestUploadDownload:
         assert name_file in path_in_site
 
 
+class TestDynamicProperties:
+    def test_test_clickable_button(self, driver):
+        test_dynamic_properties_page = DynamicPropertiesPage(driver, 'https://demoqa.com/dynamic-properties')
+        test_dynamic_properties_page.open()
+        assert test_dynamic_properties_page.check_clickable_button() is None or False
+
+    def test_dynamic_properties_color(self, driver):
+        test_dynamic_properties_page = DynamicPropertiesPage(driver, 'https://demoqa.com/dynamic-properties')
+        test_dynamic_properties_page.open()
+        before, after = test_dynamic_properties_page.check_changed_color()
+        assert before != after
+
+    def test_test_dynamic_visible(self, driver):
+        test_dynamic_properties_page = DynamicPropertiesPage(driver, 'https://demoqa.com/dynamic-properties')
+        test_dynamic_properties_page.open()
+        assert test_dynamic_properties_page.check_visible_button() is None or False
+
+
+
+
+
+
+
 
 
 

@@ -201,7 +201,33 @@ class UploadDownloadPage(BasePage):
         self.element_is_presence(self.locators.UPLOAD_FIELD).send_keys(path)
         os.remove(path)
         site_path = self.element_is_visible(self.locators.UPLOADED_FILE_PATH).text
-        # return path, site_path
         return os.path.basename(path), os.path.basename(site_path)
+
+    def download_file(self):
+        link = self.element_is_presence(self.locators.DOWNLOAD_BUTTON).get_attribute('href')
+
+
+class DynamicPropertiesPage(BasePage):
+
+    locators = DynamicPropertiesPageLocators()
+
+    def check_changed_color(self):
+        colol_button = self.element_is_presence(self.locators.COLOR_CHANGE_BTN)
+        color_before = colol_button.value_of_css_property('color')
+        time.sleep(6)
+        color_after = colol_button.value_of_css_property('color')
+        return color_before, color_after
+
+    def check_visible_button(self):
+        return self.element_is_visible(self.locators.VISIBLE_AFTER_FIVE_SEC_BTN, timeout=1)
+
+    def check_clickable_button(self):
+        return self.element_is_clickable(self.locators.ENABLE_AFTER_FIVE_SEC_BTN, timeout=1)
+
+
+
+
+
+
         
 
