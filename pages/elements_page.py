@@ -1,5 +1,4 @@
 import os
-import site
 import time
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.by import By
@@ -192,6 +191,7 @@ class LinksPage(BasePage):
         else:
             return respone.status_code
 
+
 class UploadDownloadPage(BasePage):
 
     locators = UploadDownloadPageLocators()
@@ -201,7 +201,7 @@ class UploadDownloadPage(BasePage):
         self.element_is_presence(self.locators.UPLOAD_FIELD).send_keys(path)
         os.remove(path)
         site_path = self.element_is_visible(self.locators.UPLOADED_FILE_PATH).text
-    
-        return path.strip("/"), site_path
+        # return path, site_path
+        return os.path.basename(path), os.path.basename(site_path)
         
-    
+
