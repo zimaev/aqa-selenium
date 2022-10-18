@@ -130,6 +130,9 @@ class TestUploadDownload:
         name_file, path_in_site = upload_download.upload_file()
         assert name_file in path_in_site
 
+    def test_download_file(self, driver):
+        upload_download = UploadDownloadPage(driver, 'https://demoqa.com/upload-download')
+        upload_download.open()
 
 
 

@@ -29,3 +29,5 @@ def generated_file():
      file.write(f'{fake_ru.paragraph(nb_sentences=2)}')
      file.close()
      return path
+
+
