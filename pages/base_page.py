@@ -20,7 +20,6 @@ class BasePage:
         except Exception as e:
             logger.critical(f"Ошибка видимости элемента {e}")
 
-
     def elements_are_visible(self, locator, timeout=30):
         try:
             return wait(self.driver, timeout).until(

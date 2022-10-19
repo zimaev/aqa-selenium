@@ -18,8 +18,11 @@ def generated_person():
         department=fake_ru.job(),
         salary=random.randint(30000, 130000),
         email=fake_ru.email(),
+        mobile=fake_ru.msisdn(),
         current_address=fake_ru.address(),
-        permanent_address=fake_ru.address()
+        permanent_address=fake_ru.address(),
+        birth_date=fake_ru.past_date()
+
     )
 
 
