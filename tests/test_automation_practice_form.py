@@ -13,9 +13,6 @@ class TestFormPage:
     def test_form(self, driver, gender, hobbies, state, city, subjects):
         form_page = FormPage(driver, "https://demoqa.com/automation-practice-form")
         form_page.open()
-        form_page.fill_form_fields(student_gender=gender,
-                                   student_hobbies=hobbies,
-                                   state=state,
-                                   city=city,
-                                   subjects=subjects)
+        form_page.fill_form_fields(student_gender=gender, student_hobbies=hobbies,
+                                   state=state, city=city, subjects=subjects)
         time.sleep(3)

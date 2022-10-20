@@ -32,7 +32,7 @@ class FormPage(BasePage):
         email = person_info.email
         mobile = person_info.mobile
         current_address = person_info.current_address
-        birdh_date = person_info.birth_date
+        # birdh_date = person_info.birth_date
 
         self.driver.execute_script("document.getElementsByTagName('footer')[0].remove();")
         self.driver.execute_script("document.getElementById('close-fixedban').remove();")
@@ -40,12 +40,11 @@ class FormPage(BasePage):
         self.element_is_visible(self.locators.LAST_NAME).send_keys(last_name)
         self.element_is_visible(self.locators.USER_EMAIL).send_keys(email)
         self.element_is_visible(self.locators.MOBILE).send_keys(mobile)
-        self.element_is_visible(self.locators.DATE_OF_BIRTH).send_keys(birdh_date )
+        self.element_is_visible(self.locators.DATE_OF_BIRTH).send_keys("")
         self.element_is_visible(gender[student_gender]).click()
         self.element_is_visible(self.locators.SUBJECTS).send_keys(subjects)
         self.element_is_visible(self.locators.SUBJECTS).send_keys(Keys.RETURN)
         self.element_is_visible(hobbies[student_hobbies]).click()
-
         self.element_is_visible(self.locators.UPLOAD_PICTURE).send_keys(file_path)
         self.element_is_visible(self.locators.CURRENT_ADDRESS).send_keys(current_address)
         input_state = self.element_is_visible(self.locators.STATE)
