@@ -1,6 +1,8 @@
 import os
+import time
 
 from selenium.webdriver import Keys
+from selenium.webdriver.support.select import Select
 
 from generator.generator import generated_person, generated_file
 from locators.form_page_locators import FormPageLocators
@@ -32,7 +34,7 @@ class FormPage(BasePage):
         email = person_info.email
         mobile = person_info.mobile
         current_address = person_info.current_address
-        # birdh_date = person_info.birth_date
+        birdh_date = person_info.birth_date
 
         self.driver.execute_script("document.getElementsByTagName('footer')[0].remove();")
         self.driver.execute_script("document.getElementById('close-fixedban').remove();")
@@ -40,7 +42,10 @@ class FormPage(BasePage):
         self.element_is_visible(self.locators.LAST_NAME).send_keys(last_name)
         self.element_is_visible(self.locators.USER_EMAIL).send_keys(email)
         self.element_is_visible(self.locators.MOBILE).send_keys(mobile)
-        self.element_is_visible(self.locators.DATE_OF_BIRTH).send_keys("")
+        self.element_is_visible(self.locators.DATE_OF_BIRTH).click()
+        self.element_is_visible(self.locators.DATE_OF_BIRTH).send_keys(Keys.CONTROL + "a")
+        self.element_is_visible(self.locators.DATE_OF_BIRTH).send_keys(birdh_date)
+        self.element_is_visible(self.locators.DATE_OF_BIRTH).click()
         self.element_is_visible(gender[student_gender]).click()
         self.element_is_visible(self.locators.SUBJECTS).send_keys(subjects)
         self.element_is_visible(self.locators.SUBJECTS).send_keys(Keys.RETURN)

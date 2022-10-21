@@ -6,6 +6,7 @@ from faker import Faker
 
 
 fake_ru = Faker("ru_RU")
+fake_en = Faker("en_US")
 Faker.seed()
 
 
@@ -21,7 +22,7 @@ def generated_person():
         mobile=fake_ru.msisdn(),
         current_address=fake_ru.address(),
         permanent_address=fake_ru.address(),
-        birth_date=fake_ru.past_date()
+        birth_date=str(fake_ru.date_of_birth())
 
     )
 
