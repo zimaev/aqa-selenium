@@ -16,4 +16,3 @@ class Person:
     current_address: str = None
     permanent_address: str = None
 
-

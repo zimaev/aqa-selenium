@@ -60,4 +60,13 @@ class FormPage(BasePage):
         input_city.send_keys(city)
         input_city.send_keys(Keys.RETURN)
         self.element_is_presence(self.locators.SUBMIT).click()
+        return person_info
+
+    def form_result(self):
+        result_list = self.elements_are_visible(self.locators.TABLE_RESULT_VALUE)
+        person_table = []
+        for i in result_list:
+            person_table.append(i.text)
+
+        return person_table
 

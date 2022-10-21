@@ -22,3 +22,6 @@ class FormPageLocators:
     CITY = (By.XPATH, "//input[@id='react-select-4-input']")
     SUBMIT = (By.XPATH, "//button[@id='submit']")
 
+    # TABLE
+    TABLE_RESULT_VALUE = (By.XPATH, '//tbody//td[2]')
+
