@@ -49,6 +49,19 @@ class AlertPage(BasePage):
         return msg
 
 
+class FramesPage(BasePage):
+    locators = FramesPageLocators()
+
+    def check_first_frame(self):
+        frame = self.element_is_presence(self.locators.FRAME_1)
+        width = frame.get_attribute('width')
+        height = frame.get_attribute('height')
+        self.driver.switch_to.frame(frame)
+
+        text = self.element_is_presence(self.locators.IN_FRAME1_H1).text
+        return text, width, height
+
+
 
 
 

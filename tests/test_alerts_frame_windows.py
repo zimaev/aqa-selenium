@@ -44,6 +44,16 @@ class TestAlertPage:
         message = alert_page.click_prompt_button()
         assert message == "You entered Hello world"
 
+class TestFrameTable:
+
+    def test_frames(self, driver):
+        alert_page = FramesPage(driver, "https://demoqa.com/frames")
+        alert_page.open()
+        text, width, height = alert_page.check_first_frame()
+        assert text == 'This is a sample page'
+        assert width == "500px"
+        assert height == "350px"
+
 
 
 
