@@ -16,9 +16,9 @@ class FormPage(BasePage):
     def fill_form_fields(self, student_gender, student_hobbies, state, city, subjects):
 
         gender = {
-            'MALE_GENDER': self.locators.MALE_GENDER,
-            'FEMALE_GENDER': self.locators.FEMALE_GENDER,
-            'OTHER_GENDER': self.locators.OTHER_GENDER,
+            'Male': self.locators.MALE_GENDER,
+            'Female': self.locators.FEMALE_GENDER,
+            'Other': self.locators.OTHER_GENDER,
         }
 
         hobbies = {
