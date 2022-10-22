@@ -44,8 +44,8 @@ class TestAlertPage:
         message = alert_page.click_prompt_button()
         assert message == "You entered Hello world"
 
-class TestFrameTable:
 
+class TestFrameTable:
     def test_frames(self, driver):
         alert_page = FramesPage(driver, "https://demoqa.com/frames")
         alert_page.open()
@@ -55,7 +55,13 @@ class TestFrameTable:
         assert height == "350px"
 
 
-
+class TestNestedFrameTable:
+    def test_nested_frames(self, driver):
+        nested_frame_page = NestedFramesPage(driver, "https://demoqa.com/nestedframes")
+        nested_frame_page.open()
+        p_text, c_text = nested_frame_page.check_parent_frame()
+        assert p_text == "Parent frame"
+        assert c_text == "Child Iframe"
 
 
 

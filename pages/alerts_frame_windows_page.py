@@ -1,5 +1,4 @@
 import time
-
 from locators.alerts_frame_windows_locators import *
 from pages.base_page import BasePage
 
@@ -60,6 +59,25 @@ class FramesPage(BasePage):
 
         text = self.element_is_presence(self.locators.IN_FRAME1_H1).text
         return text, width, height
+
+
+class NestedFramesPage(BasePage):
+    locators = NestedFramesPageLocators()
+
+    def check_parent_frame(self):
+        p_frame = self.element_is_presence(self.locators.FRAME_1)
+        self.driver.switch_to.frame(p_frame)
+        p_text = self.element_is_presence(self.locators.IN_FRAME1_BODY).text
+
+        c_frame = self.element_is_presence(self.locators.CHILD_FRAME)
+        self.driver.switch_to.frame(c_frame)
+        c_text = self.element_is_presence(self.locators.IN_C_FRAME1_BODY).text
+
+        return p_text, c_text
+
+
+
+
 
 
 
