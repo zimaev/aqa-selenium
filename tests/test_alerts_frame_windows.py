@@ -64,4 +64,16 @@ class TestNestedFrameTable:
         assert c_text == "Child Iframe"
 
 
+class TestModalDialogs:
+
+    def test_modal_dialogs(self, driver):
+        modal_dialogs = ModalDialogsPage(driver, "https://demoqa.com/modal-dialogs")
+        modal_dialogs.open()
+        text, title = modal_dialogs.check_small_modal_dialogs()
+        assert title == "Small Modal"
+        assert text == "This is a small modal. It has very less content"
+
+
+
+
 

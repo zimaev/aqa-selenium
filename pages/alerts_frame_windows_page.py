@@ -76,6 +76,17 @@ class NestedFramesPage(BasePage):
         return p_text, c_text
 
 
+class ModalDialogsPage(BasePage):
+    locators = ModalDialogsLocators()
+
+    def check_small_modal_dialogs(self):
+        self.element_is_clickable(self.locators.SMALL_MODAL_BUTTON).click()
+        text = self.element_is_presence(self.locators.TEXT_MODAL_WINDOW).text
+        title = self.element_is_presence(self.locators.TITLE_MODAL_WINDOW).text
+        self.element_is_clickable(self.locators.CLOSE_MODAL_WINDOW).click()
+        return text, title
+
+
 
 
 

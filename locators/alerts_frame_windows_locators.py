@@ -30,3 +30,10 @@ class NestedFramesPageLocators:
     CHILD_FRAME = (By.XPATH, '//iframe[@srcdoc="<p>Child Iframe</p>"]')
     IN_C_FRAME1_BODY = (By.XPATH, "//p")
 
+
+class ModalDialogsLocators:
+    SMALL_MODAL_BUTTON = (By.XPATH, "//button[@id='showSmallModal']")
+    TITLE_MODAL_WINDOW = (By.XPATH, "//div[@id='example-modal-sizes-title-sm']")
+    TEXT_MODAL_WINDOW = (By.XPATH, "//div[@class='modal-body']")
+    CLOSE_MODAL_WINDOW = (By.XPATH, "//button[@id='closeSmallModal']")
+    LARGE_MODAL_BUTTON = (By.XPATH, "//button[@id='showLargeModal']")
