@@ -18,3 +18,19 @@ class AutocompletePageLocators:
 
     INPUT_SINGLE_COLOR = (By.XPATH, "//input[@id='autoCompleteSingleInput']")
     VALUE_SINGLE_COLOR = (By.XPATH, "//div[@class='auto-complete__single-value css-1uccc91-singleValue']")
+
+
+class DatePickerPageLocators:
+    DATE_INPUT = (By.XPATH, "//input[@id='datePickerMonthYearInput']")
+    DATE_INPUT_MONTH = (By.XPATH, "//select[@class='react-datepicker__month-select']")
+    DATE_INPUT_DAY_LIST = (By.XPATH, "//div[contains(@class, 'react-datepicker__day react-datepicker__day')]")
+    DATE_INPUT_YEAR = (By.XPATH, "//select[@class='react-datepicker__year-select']")
+
+    DATE_AND_TIME_INPUT = (By.XPATH, "//input[@id='dateAndTimePickerInput']")
+    DATE_AND_TIME_INPUT_MONTH = (By.XPATH, "//span[@class='react-datepicker__month-read-view--selected-month']")
+    DATE_AND_TIME_INPUT_DAY_LIST = (By.XPATH, "//div[contains(@class, 'react-datepicker__day react-datepicker__day')]")
+    DATE_AND_TIME_INPUT_YEAR = (By.XPATH, "//span[@class='react-datepicker__year-read-view--selected-year']")
+    DATE_AND_TIME_INPUT_TIME_LIST = (By.XPATH, "//li[@class='react-datepicker__time-list-item ']")
+
+    DATE_AND_TIME_INPUT_MONTH_LIST = (By.XPATH, "//div[@class='react-datepicker__month-option']")
+    DATE_AND_TIME_INPUT_YEAR_LIST = (By.XPATH, "//div[@class='react-datepicker__year-option']")

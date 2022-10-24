@@ -1,7 +1,7 @@
 import random
-from unittest.mock import patch
+from itertools import product
 import os
-from data.data import Person, Color
+from data.data import Person, Color, Date
 from faker import Faker
 
 
@@ -42,3 +42,13 @@ def generated_color():
                     'White', 'Voilet', 'Indigo',
                     'Magenta', 'Aqua']
                 )
+
+
+def generated_date():
+    yield Date(
+        year=str(random.randint(2017, 2027)),
+        month=fake_en.month_name(),
+        day=fake_ru.day_of_month(),
+        time=random.choice([f"{h:02d}:{m:02d}" for h,m in product(range(24), range(0, 60, 15))])
+    )
+

@@ -1,7 +1,7 @@
 import time
 import pytest
 
-from pages.widgets_page import AccordionPage, AutocompletePage
+from pages.widgets_page import AccordionPage, AutocompletePage, DatePickerPage
 
 
 class TestAccordion:
@@ -45,8 +45,22 @@ class TestAutocomplete:
         autocomplete_page = AutocompletePage(driver, "https://demoqa.com/auto-complete")
         autocomplete_page.open()
         input_color, output_color = autocomplete_page.fill_one_color()
-        assert  input_color == output_color
+        assert input_color == output_color
 
+
+class TestDatePicker:
+
+    def test_change_data(self, driver):
+        date_piker_page = DatePickerPage(driver, "https://demoqa.com/date-picker")
+        date_piker_page.open()
+        date_before, date_after = date_piker_page.select_date()
+        assert date_before != date_after
+
+    def test_change_data_and_time(self, driver):
+        date_piker_page = DatePickerPage(driver, "https://demoqa.com/date-picker")
+        date_piker_page.open()
+        date_before, date_after = date_piker_page.select_date_and_time()
+        assert date_before != date_after
 
 
 
