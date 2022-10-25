@@ -33,7 +33,6 @@ class AccordionPage(BasePage):
 
 
 class AutocompletePage(BasePage):
-
     locators = AutocompletePageLocators()
 
     def fill_input_multy_color(self):
@@ -77,7 +76,6 @@ class AutocompletePage(BasePage):
 
 
 class DatePickerPage(BasePage):
-
     locators = DatePickerPageLocators()
 
     def select_date(self):
@@ -92,7 +90,7 @@ class DatePickerPage(BasePage):
         input_date.send_keys(Keys.RETURN)
         return input_date_before, input_date_after
 
-    def select_date_by_text(self, element, value ):
+    def select_date_by_text(self, element, value):
         select = Select(self.element_is_presence(element))
         select.select_by_visible_text(value)
 
@@ -143,13 +141,28 @@ class ProgressBarPage(BasePage):
         return value_before, value_after
 
 
+class TabsPage(BasePage):
+    locators = TabsLocators()
 
+    def check_tabs(self, tab):
+        tabs = {"What":
+                    {"title": self.locators.TAB_WHAT,
+                     "content": self.locators.TAB_WHAT_CONTENT
+                     },
 
+                "Origin": {
+                    "title": self.locators.TAB_ORIGIN,
+                    "content": self.locators.TAB_ORIGIN_CONTENT
+                },
 
-
-
-
-
-
-
-
+                "Use": {"title": self.locators.TAB_USER,
+                        "content": self.locators.TAB_USER_CONTENT
+                        },
+                "More": {"title": self.locators.TAB_MORE,
+                         "content": ...
+                         },
+                }
+        select_tab = self.element_is_visible(tabs[tab]['title'])
+        select_tab.click()
+        content = self.element_is_visible(tabs[tab]['content'])
+        return select_tab.text, len(content.text)

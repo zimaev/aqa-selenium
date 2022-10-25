@@ -1,14 +1,14 @@
 import time
 import pytest
 
-from pages.widgets_page import AccordionPage, AutocompletePage, DatePickerPage, SliderPage, ProgressBarPage
+from pages.widgets_page import AccordionPage, AutocompletePage, DatePickerPage, SliderPage, ProgressBarPage, TabsPage
 
 
 class TestAccordion:
 
     @pytest.mark.parametrize('section, tit', [('first', 'What is Lorem Ipsum?'),
-                                                ('second', 'Where does it come from?'),
-                                                ('third', 'Why do we use it?')])
+                                              ('second', 'Where does it come from?'),
+                                              ('third', 'Why do we use it?')])
     def test_accordion_page(self, driver, section, tit):
         accordion_page = AccordionPage(driver, "https://demoqa.com/accordian")
         accordion_page.open()
@@ -19,7 +19,7 @@ class TestAccordion:
 
 class TestAutocomplete:
 
-    def test_add_multy_color(self,driver):
+    def test_add_multy_color(self, driver):
         autocomplete_page = AutocompletePage(driver, "https://demoqa.com/auto-complete")
         autocomplete_page.open()
         input_color = autocomplete_page.fill_input_multy_color()
@@ -65,7 +65,6 @@ class TestDatePicker:
 
 class TestSliderPage:
     def test_slider(self, driver):
-
         slider_page = SliderPage(driver, "https://demoqa.com/slider")
         slider_page.open()
         value_after, value_before = slider_page.change_slider_value()
@@ -81,6 +80,11 @@ class TestProgressBarPage:
         assert before != after
 
 
-
-
-
+class TestTabsPage:
+    @pytest.mark.parametrize("tab, len", [('What', 574), ('Origin', 1059), ('Use', 613)])
+    def test_change_tabs(self, driver, tab, len):
+        tabs_page = TabsPage(driver, "https://demoqa.com/tabs")
+        tabs_page.open()
+        title, len_content = tabs_page.check_tabs(tab)
+        assert title == tab
+        assert len_content == len
