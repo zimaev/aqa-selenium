@@ -120,6 +120,34 @@ class DatePickerPage(BasePage):
         return input_date_before, input_date_after
 
 
+class SliderPage(BasePage):
+    locators = SliderPageLocators()
+
+    def change_slider_value(self):
+        value_before = self.element_is_visible(self.locators.SLIDER_VALUE).get_attribute('value')
+        slider = self.element_is_visible(self.locators.INPUT_SLIDER)
+        self.brag_and_drop_by_offset(slider, random.randint(0, 100), 0)
+        value_after = self.element_is_visible(self.locators.SLIDER_VALUE).get_attribute('value')
+        return value_before, value_after
+
+
+class ProgressBarPage(BasePage):
+    locators = ProgressBarPageLocators()
+
+    def change_progress_bar_value(self):
+        value_before = self.element_is_presence(self.locators.PROGRESS_BAR).text
+        self.element_is_visible(self.locators.BUTTON_STAR_STOP).click()
+        time.sleep(random.randint(2, 10))
+        self.element_is_visible(self.locators.BUTTON_STAR_STOP).click()
+        value_after = self.element_is_presence(self.locators.PROGRESS_BAR).text
+        return value_before, value_after
+
+
+
+
+
+
+
 
 
 

@@ -1,7 +1,7 @@
 import time
 import pytest
 
-from pages.widgets_page import AccordionPage, AutocompletePage, DatePickerPage
+from pages.widgets_page import AccordionPage, AutocompletePage, DatePickerPage, SliderPage, ProgressBarPage
 
 
 class TestAccordion:
@@ -62,6 +62,23 @@ class TestDatePicker:
         date_before, date_after = date_piker_page.select_date_and_time()
         assert date_before != date_after
 
+
+class TestSliderPage:
+    def test_slider(self, driver):
+
+        slider_page = SliderPage(driver, "https://demoqa.com/slider")
+        slider_page.open()
+        value_after, value_before = slider_page.change_slider_value()
+        assert value_after != value_before
+
+
+class TestProgressBarPage:
+    def test_progress_bar(self, driver):
+        progress_bar_page = ProgressBarPage(driver, "https://demoqa.com/progress-bar")
+        progress_bar_page.open()
+        before, after = progress_bar_page.change_progress_bar_value()
+        print(before, after)
+        assert before != after
 
 
 

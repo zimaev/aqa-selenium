@@ -71,5 +71,10 @@ class BasePage:
         actions = ActionChains(self.driver)
         actions.double_click(element).perform()
 
+    def brag_and_drop_by_offset(self, element, x_cor, y_cor):
+        actions = ActionChains(self.driver)
+        actions.drag_and_drop_by_offset(element, x_cor, y_cor)
+        actions.perform()
+
 
 
