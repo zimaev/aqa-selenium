@@ -76,5 +76,9 @@ class BasePage:
         actions.drag_and_drop_by_offset(element, x_cor, y_cor)
         actions.perform()
 
+    def hover_to_element(self, element):
+        actions = ActionChains(self.driver)
+        actions.move_to_element(element).perform()
+
 
 

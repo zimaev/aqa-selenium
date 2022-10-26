@@ -1,7 +1,8 @@
 import time
 import pytest
 
-from pages.widgets_page import AccordionPage, AutocompletePage, DatePickerPage, SliderPage, ProgressBarPage, TabsPage
+from pages.widgets_page import AccordionPage, AutocompletePage, DatePickerPage, SliderPage, ProgressBarPage, TabsPage, \
+    ToolTipsPage
 
 
 class TestAccordion:
@@ -88,3 +89,16 @@ class TestTabsPage:
         title, len_content = tabs_page.check_tabs(tab)
         assert title == tab
         assert len_content == len
+
+
+class TestToolTips:
+
+    def test_tool_tips(self, driver):
+        tool_tips_page = ToolTipsPage(driver, 'https://demoqa.com/tool-tips')
+        tool_tips_page.open()
+        tool_tips_button, tool_tips_input, tool_tips_contrary, tool_tips_number = tool_tips_page.check_tool_tips()
+        assert tool_tips_button == "You hovered over the Button"
+        assert tool_tips_input == 'You hovered over the text field'
+        assert tool_tips_contrary == 'You hovered over the Contrary'
+        assert tool_tips_number == "You hovered over the 1.10.32"
+

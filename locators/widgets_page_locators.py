@@ -55,3 +55,15 @@ class TabsLocators:
     TAB_USER_CONTENT = (By.XPATH, "//div[@id='demo-tabpane-use']")
     TAB_MORE = (By.XPATH, "//a[@id='demo-tab-more']")
 
+
+class ToolTipsPageLocators:
+    BUTTON = (By.XPATH, "//button[@id='toolTipButton']")
+    HOOVER_BUTTON = (By.XPATH, "//button[@aria-describedby='buttonToolTip']")
+    INPUT_FIELD = (By.XPATH, "//input[@id='toolTipTextField']")
+    HOOVER_INPUT_FIELD = (By.XPATH, "//input[@aria-describedby='textFieldToolTip']")
+    CONTRARY = (By.XPATH, "//a[.='Contrary']")
+    HOOVER_CONTRARY = (By.XPATH, "//a[@aria-describedby='contraryTexToolTip']")
+    NUMBER = (By.XPATH, "//a[.='1.10.32']")
+    NUMBER_HOVER = (By.XPATH, "//a[@aria-describedby='sectionToolTip']")
+    HOVER_MSG = (By.XPATH, "//div[@class='tooltip-inner']")
+
