@@ -2,7 +2,7 @@ import time
 import pytest
 
 from pages.widgets_page import AccordionPage, AutocompletePage, DatePickerPage, SliderPage, ProgressBarPage, TabsPage, \
-    ToolTipsPage
+    ToolTipsPage, MenuPage
 
 
 class TestAccordion:
@@ -102,3 +102,12 @@ class TestToolTips:
         assert tool_tips_contrary == 'You hovered over the Contrary'
         assert tool_tips_number == "You hovered over the 1.10.32"
 
+
+class TestMenu:
+    def test_menu(self, driver):
+        menu_page = MenuPage(driver, "https://demoqa.com/menu")
+        menu_page.open()
+        menu = menu_page.check_nemu()
+        assert menu == ['Main Item 1', 'Main Item 2\nSub Item\nSub Item\nSUB SUB LIST »', 'Sub Item', 'Sub Item',
+                        'SUB SUB LIST »\nSub Sub Item 1\nSub Sub Item 2',
+                        'Sub Sub Item 1', 'Sub Sub Item 2', 'Main Item 3']

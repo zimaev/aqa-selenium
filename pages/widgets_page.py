@@ -188,3 +188,17 @@ class ToolTipsPage(BasePage):
         tool_tips_number = self.get_text_from_tool_tips(self.locators.NUMBER, self.locators.NUMBER_HOVER)
         return tool_tips_button, tool_tips_input, tool_tips_contrary, tool_tips_number
 
+
+class MenuPage(BasePage):
+    locators = MenuPageLocators()
+
+    def check_nemu(self):
+        menu_items = self.elements_are_presence(self.locators.MENU_LIST)
+        data = []
+        for i in menu_items:
+            self.hover_to_element(i)
+            data.append(i.text )
+        print(data)
+        return data
+
+

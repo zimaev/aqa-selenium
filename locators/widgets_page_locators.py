@@ -67,3 +67,7 @@ class ToolTipsPageLocators:
     NUMBER_HOVER = (By.XPATH, "//a[@aria-describedby='sectionToolTip']")
     HOVER_MSG = (By.XPATH, "//div[@class='tooltip-inner']")
 
+
+class MenuPageLocators:
+    MENU_LIST = (By.XPATH, "//ul[@id='nav']//li")
+
