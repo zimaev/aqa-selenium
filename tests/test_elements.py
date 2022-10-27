@@ -35,7 +35,6 @@ def test_radio_button(driver, radio):
     assert radio == get
 
 
-
 class TestWebTable:
 
     def test_web_table_add_person(self, driver):

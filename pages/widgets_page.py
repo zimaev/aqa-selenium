@@ -198,7 +198,6 @@ class MenuPage(BasePage):
         for i in menu_items:
             self.hover_to_element(i)
             data.append(i.text )
-        print(data)
         return data
 
 
