@@ -16,3 +16,14 @@ class SelectablePageLocators:
     GRID_ITEM =(By.XPATH, "//li[@class='list-group-item list-group-item-action']")
     GRID_ITEM_ACTIVE = (By.XPATH, "//li[@class='list-group-item active list-group-item-action']")
 
+
+class ResizablePageLocators:
+    RESIZABLE_BOX_HANDLE = (By.XPATH,
+                            "//div[@id='resizableBoxWithRestriction']/span[@class='react-resizable-handle react-resizable-handle-se']")
+    RESIZABLE_BOX = (By.XPATH, "//div[@id='resizableBoxWithRestriction']")
+
+    RESIZABLE = (By.XPATH, "//div[@id='resizable']")
+    RESIZABLE_HANDLE = (By.XPATH,
+                        "//div[@id='resizable']/span[@class='react-resizable-handle react-resizable-handle-se']")
+
+
