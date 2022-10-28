@@ -40,11 +40,11 @@ class DroppablePageLocators:
 
     # PreventPropogation
     PREVENT_PROPOGATION_TAB = (By.XPATH, "//a[@id='droppableExample-tab-preventPropogation']")
-    PREVENT_DRAG_ME = (By.XPATH, "//a[@id='droppableExample-tab-preventPropogation']")
-    NOT_GREEDY_DROP_BOX_TEX = (By.XPATH, "")
-    NOT_GREEDY_INNER_BOX = (By.XPATH, "")
-    GREEDY_DROP_BOX_TEX = (By.XPATH, "")
-    GREEDY_INNER_BOX = (By.XPATH, "")
+    PREVENT_DRAG_ME = (By.XPATH, "//div[@id='dragBox']")
+    NOT_GREEDY_DROP_BOX_TEX = (By.XPATH, "//*[@id='notGreedyDropBox']/p")
+    NOT_GREEDY_INNER_BOX = (By.XPATH, "//*[@id='notGreedyInnerDropBox']")
+    GREEDY_DROP_BOX_TEX = (By.XPATH, "//*[@id='greedyDropBox']/p")
+    GREEDY_INNER_BOX = (By.XPATH, "//*[@id='greedyDropBoxInner']")
 
     # RevertDraggable
     REVERT_DRAGGABLE_TAB = (By.XPATH, "//a[@id='droppableExample-tab-revertable']")

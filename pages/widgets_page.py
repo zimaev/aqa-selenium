@@ -124,7 +124,7 @@ class SliderPage(BasePage):
     def change_slider_value(self):
         value_before = self.element_is_visible(self.locators.SLIDER_VALUE).get_attribute('value')
         slider = self.element_is_visible(self.locators.INPUT_SLIDER)
-        self.brag_and_drop_by_offset(slider, random.randint(0, 100), 0)
+        self.drag_and_drop_by_offset(slider, random.randint(0, 100), 0)
         value_after = self.element_is_visible(self.locators.SLIDER_VALUE).get_attribute('value')
         return value_before, value_after
 
