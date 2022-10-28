@@ -26,16 +26,13 @@ def test_checkbox(driver):
     assert input_chekbox == output_chekbox, "Установленные чекбоксы не равны отображаемым"
 
 
-@pytest.mark.parametrize("radio", ['Yes', 'Impressive', "No"])
+@pytest.mark.parametrize("radio", ['Yes', 'Impressive', pytest.param("No", marks=pytest.mark.xfail)])
 def test_radio_button(driver, radio):
     radio_button = RadioButton(driver, 'https://demoqa.com/radio-button')
     radio_button.open()
     radio_button.click_radio_button(radio)
     get = radio_button.get_selected_text()
-    if radio in ['Yes', 'Impressive']:
-        assert radio == get
-    else:
-        pytest.xfail(reason="Негативный тест. Чекбокс заблокирован")
+    assert radio == get
 
 
 class TestWebTable:
@@ -130,6 +127,9 @@ class TestUploadDownload:
         name_file, path_in_site = upload_download.upload_file()
         assert name_file in path_in_site
 
+    def test_download_file(self, driver):
+        upload_download = UploadDownloadPage(driver, 'https://demoqa.com/upload-download')
+        upload_download.open()
 
 class TestDynamicProperties:
     def test_test_clickable_button(self, driver):
