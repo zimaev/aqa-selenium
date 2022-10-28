@@ -1,6 +1,7 @@
 import random
 
-from locators.interactions_page_locators import SortablePageLocators, SelectablePageLocators, ResizablePageLocators
+from locators.interactions_page_locators import SortablePageLocators, SelectablePageLocators, ResizablePageLocators, \
+    DroppablePageLocators
 from pages.base_page import BasePage
 
 
@@ -80,6 +81,11 @@ class ResizablePage(BasePage):
         self.brag_and_drop_by_offset(self.element_is_visible(self.locators.RESIZABLE_HANDLE), -200, 1)
         min_size = self.get_px_from_width_height(self.get_max_min_size(self.locators.RESIZABLE))
         return max_size, min_size
+
+
+class DroppablePage(BasePage):
+    locators = DroppablePageLocators()
+
 
 
 
