@@ -20,7 +20,6 @@ class BasePage:
         except Exception as e:
             logger.critical(f"Ошибка видимости элемента {e}")
 
-
     def elements_are_visible(self, locator, timeout=30):
         try:
             return wait(self.driver, timeout).until(
@@ -71,6 +70,20 @@ class BasePage:
     def double_click(self, element):
         actions = ActionChains(self.driver)
         actions.double_click(element).perform()
+
+    def drag_and_drop_by_offset(self, element, x_cor, y_cor):
+        actions = ActionChains(self.driver)
+        actions.drag_and_drop_by_offset(element, x_cor, y_cor)
+        actions.perform()
+
+    def drag_and_drop_to_element(self, what, where):
+        actions = ActionChains(self.driver)
+        actions.drag_and_drop(what, where)
+        actions.perform()
+
+    def hover_to_element(self, element):
+        actions = ActionChains(self.driver)
+        actions.move_to_element(element).perform()
 
 
 
